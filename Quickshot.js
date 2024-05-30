@@ -1,4 +1,4 @@
-// Variables
+
 let score = 0;
 let lives = 5;
 let timerStarted = false;
@@ -10,13 +10,13 @@ const restartButton = document.getElementById('restart-button');
 let currentTarget = null;
 let targetTimeout;
 let timeLeft = 300;
-const timerDisplay = document.createElement('div'); // Create a timer display element
+const timerDisplay = document.createElement('div'); 
 
-// Append timer display to the body
+
 timerDisplay.id = 'timer';
 document.body.appendChild(timerDisplay);
 
-// Function to generate random coordinates
+
 function getRandomPosition(targetSize) {
     const gameWidth = window.innerWidth;
     const gameHeight = window.innerHeight;
@@ -27,9 +27,9 @@ function getRandomPosition(targetSize) {
     return { x: posX, y: posY };
 }
 
-// Function to create a target
+
 function createTarget() {
-    // Remove current target if exists
+   
     if (currentTarget) {
         currentTarget.remove();
     }
@@ -37,11 +37,11 @@ function createTarget() {
     const target = document.createElement('div');
     target.className = 'target';
 
-    const targetSize = 30 + Math.random() * 70; // Target size between 30px and 100px
+    const targetSize = 30 + Math.random() * 70; 
     target.style.width = `${targetSize}px`;
     target.style.height = `${targetSize}px`;
 
-    const isRed = Math.random() < 0.8; // 80% chance for red, 20% for blue
+    const isRed = Math.random() < 0.8; 
     if (isRed) {
         target.classList.add('red');
         target.addEventListener('click', () => {
@@ -51,7 +51,7 @@ function createTarget() {
             }
             score++;
             scoreDisplay.textContent = `Score: ${score}`;
-            clearTimeout(targetTimeout); // Clear the timeout if clicked
+            clearTimeout(targetTimeout);
             target.remove();
             createTarget();
         });
@@ -64,7 +64,7 @@ function createTarget() {
             }
             lives--;
             livesDisplay.textContent = `Lives: ${lives}`;
-            clearTimeout(targetTimeout); // Clear the timeout if clicked
+            clearTimeout(targetTimeout); d
             target.remove();
             createTarget();
         });
@@ -77,21 +77,19 @@ function createTarget() {
     gameContainer.appendChild(target);
     currentTarget = target;
 
-    // Set timeout to remove target if not clicked within 2 seconds
+
     targetTimeout = setTimeout(() => {
         target.remove();
         createTarget();
     }, 2000);
 }
 
-// Function to handle game over
 function gameOver() {
     gameOverDisplay.style.display = 'block';
-    gameContainer.style.pointerEvents = 'none'; // Disable clicking targets
-    clearInterval(timerInterval); // Stop the timer
+    gameContainer.style.pointerEvents = 'none'; 
+    clearInterval(timerInterval); 
 }
 
-// Function to reset the game
 function resetGame() {
     score = 0;
     lives = 5;
@@ -101,18 +99,16 @@ function resetGame() {
     livesDisplay.textContent = `Lives: ${lives}`;
     timerDisplay.textContent = formatTime(timeLeft);
     gameOverDisplay.style.display = 'none';
-    gameContainer.style.pointerEvents = 'auto'; // Enable clicking targets
+    gameContainer.style.pointerEvents = 'auto'; 
     createTarget();
 }
 
-// Function to format the time
 function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
 }
 
-// Function to update the timer
 function updateTimer() {
     timeLeft--;
     timerDisplay.textContent = formatTime(timeLeft);
@@ -121,14 +117,11 @@ function updateTimer() {
     }
 }
 
-// Function to start the timer
 function startTimer() {
     timerInterval = setInterval(updateTimer, 1000);
 }
 
-// Event listener for the restart button
 restartButton.addEventListener('click', resetGame);
 
-// Initial setup
 createTarget();
 timerDisplay.textContent = formatTime(timeLeft);
