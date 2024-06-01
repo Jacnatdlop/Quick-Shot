@@ -2,6 +2,7 @@
 let score = 0;
 let lives = 5;
 let timerStarted = false;
+let timerInterval;
 const gameContainer = document.getElementById('game');
 const scoreDisplay = document.getElementById('score');
 const livesDisplay = document.getElementById('lives');
@@ -67,6 +68,9 @@ function createTarget() {
             clearTimeout(targetTimeout); // Clear the timeout if clicked
             target.remove();
             createTarget();
+            if (lives <= 0) {
+                gameOver();
+            }
         });
     }
 
@@ -89,6 +93,10 @@ function gameOver() {
     gameOverDisplay.style.display = 'block';
     gameContainer.style.pointerEvents = 'none'; // Disable clicking targets
     clearInterval(timerInterval); // Stop the timer
+    if (currentTarget) {
+        currentTarget.remove(); // Remove the current target
+    }
+    clearTimeout(targetTimeout); // Clear the timeout for target creation
 }
 
 // Function to reset the game
