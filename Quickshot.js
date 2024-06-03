@@ -8,14 +8,13 @@ const scoreDisplay = document.getElementById('score');
 const livesDisplay = document.getElementById('lives');
 const gameOverDisplay = document.getElementById('game-over');
 const restartButton = document.getElementById('restart-button');
+const playButton = document.getElementById('play-button');
+const homepage = document.getElementById('homepage');
+const gameWrapper = document.getElementById('game-container');
 let currentTarget = null;
 let targetTimeout;
 let timeLeft = 300;
-const timerDisplay = document.createElement('div'); // Create a timer display element
-
-// Append timer display to the body
-timerDisplay.id = 'timer';
-document.body.appendChild(timerDisplay);
+const timerDisplay = document.getElementById('timer');
 
 // Function to generate random coordinates
 function getRandomPosition(targetSize) {
@@ -134,9 +133,15 @@ function startTimer() {
     timerInterval = setInterval(updateTimer, 1000);
 }
 
+// Event listener for the play button
+playButton.addEventListener('click', () => {
+    homepage.style.display = 'none';
+    gameWrapper.style.display = 'block';
+    resetGame();
+});
+
 // Event listener for the restart button
 restartButton.addEventListener('click', resetGame);
 
 // Initial setup
-createTarget();
 timerDisplay.textContent = formatTime(timeLeft);
