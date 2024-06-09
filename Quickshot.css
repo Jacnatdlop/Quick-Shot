@@ -11,23 +11,49 @@ body {
 
 #homepage {
     text-align: center;
+    background-image: url('Images/Quick-shot.png'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-#play-button {
+#instructions {
+    background-color: rgba(255, 255, 255, 0.8); /* White background with opacity */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px; /* Limit width of the instructions box */
+    margin: 20px; /* Add margin around the instructions box */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
+
+#play-button, #about-button, #close-about-button {
     font-size: 24px;
     padding: 10px 20px;
     cursor: pointer;
+    margin: 10px;
+}
+
+#about-section {
+    margin-top: 20px;
 }
 
 #game-container {
     width: 100vw;
     height: 100vh;
     position: relative;
+    z-index: 0; /* Ensure game content is below homepage */
 }
 
 #game {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     position: relative;
 }
 

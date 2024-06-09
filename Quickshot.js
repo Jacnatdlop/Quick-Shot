@@ -130,6 +130,20 @@ playButton.addEventListener('click', () => {
     resetGame();
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const aboutButton = document.getElementById('about-button');
+    const aboutSection = document.getElementById('about-section');
+    const closeAboutButton = document.getElementById('close-about-button');
+
+    aboutButton.addEventListener('click', function() {
+        aboutSection.style.display = 'block';
+    });
+
+    closeAboutButton.addEventListener('click', function() {
+        aboutSection.style.display = 'none';
+    });
+});
+
 restartButton.addEventListener('click', resetGame);
 
 timerDisplay.textContent = formatTime(timeLeft);

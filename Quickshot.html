@@ -8,8 +8,21 @@
 </head>
 <body>
     <div id="homepage">
-        <h1>Welcome to Quick Shot</h1>
-        <button id="play-button">Play</button>
+        <div id="instructions">
+            <h1>Welcome to Quick Shot</h1>
+            <h3>Quick shot is a game where you can test or improve your hand eye coordination</h3>
+            <p>Click on the red targets to score points. Clicking on blue targets will decrease your lives.</p>
+            <button id="play-button">Play</button>
+            <button id="about-button">About</button>
+            <div id="about-section" style="display: none;">
+                <h2>About Quick Shot</h2>
+                <p>
+                    Quickshot came to be because I am a fan of fps shooters. These games require precise mouse movement and hand eye coordination. 
+                    I have tried many aim trainers and I thought it would be nice to make a fun version of it.
+                </p>
+                <button id="close-about-button">Close</button>
+            </div>
+        </div>
     </div>
     <div id="game-container" style="display:none;">
         <div id="game"></div>
