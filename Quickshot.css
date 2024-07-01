@@ -156,21 +156,21 @@ body {
 
 .moving-square {
     animation-name: move-square;
-    animation-duration: 6s; /* Adjusted duration */
+    animation-duration: 6s; 
 }
 
 .moving-circle {
     animation-name: move-circle;
-    animation-duration: 5s; /* Adjusted duration */
+    animation-duration: 5s; 
 }
 
 .moving-triangle {
     animation-name: move-triangle;
-    animation-duration: 4s; /* Adjusted duration */
+    animation-duration: 4s; 
 }
 
 .moving-zigzag {
     animation-name: move-zigzag;
-    animation-duration: 7s; /* Adjusted duration */
+    animation-duration: 7s; 
 }
 
