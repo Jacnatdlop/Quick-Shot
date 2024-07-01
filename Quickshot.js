@@ -25,7 +25,6 @@ function getRandomPosition(targetSize) {
     return { x: posX, y: posY };
 }
 
-
 function createTarget() {
     if (currentTarget) {
         currentTarget.remove();
@@ -73,6 +72,19 @@ function createTarget() {
     const pos = getRandomPosition(targetSize);
     target.style.left = `${pos.x}px`;
     target.style.top = `${pos.y}px`;
+
+    const patterns = ['pattern1', 'pattern2'];
+    const randomPattern = patterns[Math.floor(Math.random() * patterns.length)];
+    target.classList.add(randomPattern);
+
+    const movementPatterns = ['moving-square', 'moving-circle', 'moving-triangle', 'moving-zigzag'];
+    if (Math.random() < 0.5) {
+        const movementClass = movementPatterns[Math.floor(Math.random() * movementPatterns.length)];
+        target.classList.add('moving', movementClass);
+
+        const moveSpeed = (Math.random() * 1 + 1) + 's'; 
+        target.style.setProperty('--move-speed', moveSpeed);
+    }
 
     gameContainer.appendChild(target);
     currentTarget = target;

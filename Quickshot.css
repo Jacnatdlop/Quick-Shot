@@ -117,3 +117,60 @@ body {
     padding: 10px 20px;
     cursor: pointer;
 }
+
+@keyframes move-square {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(100px, 0); }
+    50% { transform: translate(100px, 100px); }
+    75% { transform: translate(0, 100px); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes move-circle {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(50px, 50px); }
+    50% { transform: translate(100px, 0); }
+    75% { transform: translate(50px, -50px); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes move-triangle {
+    0% { transform: translate(0, 0); }
+    33% { transform: translate(100px, 0); }
+    66% { transform: translate(50px, 86.6px); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes move-zigzag {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(50px, 50px); }
+    40% { transform: translate(100px, 0); }
+    60% { transform: translate(150px, 50px); }
+    80% { transform: translate(200px, 0); }
+    100% { transform: translate(250px, 50px); }
+}
+
+.moving {
+    animation-iteration-count: infinite;
+}
+
+.moving-square {
+    animation-name: move-square;
+    animation-duration: 6s; /* Adjusted duration */
+}
+
+.moving-circle {
+    animation-name: move-circle;
+    animation-duration: 5s; /* Adjusted duration */
+}
+
+.moving-triangle {
+    animation-name: move-triangle;
+    animation-duration: 4s; /* Adjusted duration */
+}
+
+.moving-zigzag {
+    animation-name: move-zigzag;
+    animation-duration: 7s; /* Adjusted duration */
+}
+
