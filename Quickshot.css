@@ -9,6 +9,24 @@ body {
     overflow: hidden;
 }
 
+#pause-button {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it's above other content */
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 5px;
+}
+
+#pause-button:hover {
+    background-color: #e0e0e0;
+}
+
 #homepage {
     text-align: center;
     background-image: url('Images/Quick-shot.png');
@@ -48,6 +66,8 @@ body {
     height: 100vh;
     position: relative;
     z-index: 0; 
+    background-size: cover;
+    background-position: center;
 }
 
 #game {
@@ -77,6 +97,9 @@ body {
     top: 10px;
     font-size: 24px;
     color: #333;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 #score {
@@ -87,10 +110,55 @@ body {
     right: 10px;
 }
 
+#lives-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+#lives-container img {
+    width: 50px;
+    height: 50px;
+}
+
 #timer {
     left: 50%;
     transform: translateX(-50%);
 }
+
+/* Add styles for pause menu */
+#pause-menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+.pause-menu-item {
+    cursor: pointer;
+    font-size: 24px;
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+.pause-menu-item:hover {
+    background-color: #e0e0e0;
+}
+
+/* Add styles for paused state */
+.paused {
+    animation-play-state: paused !important;
+}
+
 
 #game-over {
     display: none;
@@ -150,6 +218,15 @@ body {
     100% { transform: translate(250px, 50px); }
 }
 
+@keyframes move-star {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(50px, 100px); }
+    40% { transform: translate(100px, 0); }
+    60% { transform: translate(150px, 100px); }
+    80% { transform: translate(200px, 0); }
+    100% { transform: translate(250px, 100px); }
+}
+
 .moving {
     animation-iteration-count: infinite;
 }
@@ -174,3 +251,7 @@ body {
     animation-duration: 3s; 
 }
 
+.moving-star {
+    animation-name: move-star;
+    animation-duration: 3s; 
+}
