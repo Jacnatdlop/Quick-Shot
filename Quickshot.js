@@ -16,8 +16,8 @@ let timeLeft = 300;
 const timerDisplay = document.getElementById('timer');
 
 function getRandomPosition(targetSize) {
-    const gameWidth = window.innerWidth;
-    const gameHeight = window.innerHeight;
+    const gameWidth = gameContainer.clientWidth; // Use clientWidth of gameContainer
+    const gameHeight = gameContainer.clientHeight; // Use clientHeight of gameContainer
 
     const posX = Math.random() * (gameWidth - targetSize);
     const posY = Math.random() * (gameHeight - targetSize);
