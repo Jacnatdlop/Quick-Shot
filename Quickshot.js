@@ -10,14 +10,12 @@ const restartButton = document.getElementById('restart-button');
 const playButton = document.getElementById('play-button');
 const homepage = document.getElementById('homepage');
 const gameWrapper = document.getElementById('game-container');
-const pauseMenuButton = document.getElementById('pause-menu-button');
-const pauseButton = document.getElementById('pause-button'); // Ensure this matches your HTML
+const pauseButton = document.getElementById('pause-button');
 const timerDisplay = document.getElementById('timer');
 let currentTarget = null;
 let targetTimeout;
 let timeLeft = 300;
 let paused = false;
-let pauseMenuVisible = false;
 let backgroundInterval;
 
 const backgroundImages = [
@@ -201,7 +199,12 @@ function togglePause() {
         }
     } else {
         startTimer();
-        createTarget();
+        targetTimeout = setTimeout(() => {
+            if (currentTarget) {
+                currentTarget.remove();
+            }
+            createTarget();
+        }, 2000);
         gameContainer.classList.remove('paused');
         if (currentTarget) {
             currentTarget.classList.remove('paused');
@@ -249,6 +252,8 @@ function quitGame() {
     clearInterval(timerInterval);
     clearTimeout(targetTimeout);
     gameWrapper.style.display = 'none';
-    homepage.style.display = 'block';
+    homepage.style.display = 'flex'; // Ensure homepage is displayed flex for centering
+    homepage.style.justifyContent = 'center'; // Ensure it is centered horizontally
+    homepage.style.alignItems = 'center'; // Ensure it is centered vertically
     paused = false;
 }

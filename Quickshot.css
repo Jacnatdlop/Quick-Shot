@@ -17,7 +17,7 @@ body {
     font-size: 18px;
     padding: 10px 20px;
     cursor: pointer;
-    z-index: 1000; /* Ensure it's above other content */
+    z-index: 1000; 
     background-color: #fff;
     border: 2px solid #333;
     border-radius: 5px;
@@ -28,17 +28,17 @@ body {
 }
 
 #homepage {
-    text-align: center;
-    background-image: url('Images/Quick-shot.png');
-    background-position: center;
-    height: 100vh;
-    width: 100%;
-    position: relative;
-    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    background-image: url('Images/Quick-shot.png');
+    background-position: center;
+    position: relative;
+    z-index: 1;
 }
 
 #instructions {
@@ -119,8 +119,8 @@ body {
 }
 
 #lives-container img {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
 }
 
 #timer {
@@ -128,7 +128,7 @@ body {
     transform: translateX(-50%);
 }
 
-/* Add styles for pause menu */
+
 #pause-menu {
     position: absolute;
     top: 50%;
@@ -154,7 +154,7 @@ body {
     background-color: #e0e0e0;
 }
 
-/* Add styles for paused state */
+
 .paused {
     animation-play-state: paused !important;
 }
