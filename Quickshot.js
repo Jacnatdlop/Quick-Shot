@@ -14,7 +14,7 @@ const pauseButton = document.getElementById('pause-button');
 const timerDisplay = document.getElementById('timer');
 let currentTarget = null;
 let targetTimeout;
-let timeLeft = 300;
+let timeLeft = 180; // Initial game time set to 3 minutes (180 seconds)
 let paused = false;
 let backgroundInterval;
 
@@ -26,31 +26,13 @@ const backgroundImages = [
     'Images/Sumeru.png',
 ];
 
-const friendImages = [
-    'Images/Friend/Serval.png',
-    'Images/Friend/NPC_Eous.png',
-    'Images/Friend/Pom.png',
-    'Images/Friend/Teppei_Icon.png',
-    'Images/Friend/Capy.png'
-
-];
-
-const enemyImages = [
-    'Images/Enemy/Bone_Hydra.png',
-    'Images/Enemy/Cryo.png',
-    'Images/Enemy/Devil.png',
-    'Images/Enemy/Hillichurl.png',
-    'Images/Enemy/Inferno-Bomber.png',
-    'Images/Enemy/Pyro.png',
-    'Images/Enemy/Velk.png',
-    
-];
-
+// Function to change background image randomly
 function changeBackground() {
     const randomIndex = Math.floor(Math.random() * backgroundImages.length);
     gameWrapper.style.backgroundImage = `url(${backgroundImages[randomIndex]})`;
 }
 
+// Function to get a random position for the target within the game container
 function getRandomPosition(targetSize) {
     const gameWidth = gameContainer.clientWidth;
     const gameHeight = gameContainer.clientHeight;
@@ -61,6 +43,7 @@ function getRandomPosition(targetSize) {
     return { x: posX, y: posY };
 }
 
+// Function to create a new target
 function createTarget() {
     if (currentTarget) {
         currentTarget.remove();
@@ -75,8 +58,6 @@ function createTarget() {
 
     const isRed = Math.random() < 0.8;
     if (isRed) {
-        const randomIndex = Math.floor(Math.random() * enemyImages.length);
-        target.style.backgroundImage = `url(${enemyImages[randomIndex]})`;
         target.classList.add('red');
         target.addEventListener('click', () => {
             if (!timerStarted) {
@@ -90,8 +71,6 @@ function createTarget() {
             createTarget();
         });
     } else {
-        const randomIndex = Math.floor(Math.random() * friendImages.length);
-        target.style.backgroundImage = `url(${friendImages[randomIndex]})`;
         target.classList.add('blue');
         target.addEventListener('click', () => {
             if (!timerStarted) {
@@ -131,6 +110,7 @@ function createTarget() {
     }, 2000);
 }
 
+// Function called when game is over
 function gameOver() {
     gameOverDisplay.style.display = 'block';
     gameContainer.style.pointerEvents = 'none';
@@ -142,12 +122,13 @@ function gameOver() {
     clearInterval(backgroundInterval);
 }
 
+// Function to reset the game
 function resetGame() {
     paused = false;
     hidePauseMenu();
     score = 0;
     lives = 5;
-    timeLeft = 300;
+    timeLeft = 180; // Reset time to 3 minutes (180 seconds)
     timerStarted = false;
     scoreDisplay.textContent = `Score: ${score}`;
     timerDisplay.textContent = formatTime(timeLeft);
@@ -159,6 +140,7 @@ function resetGame() {
     backgroundInterval = setInterval(changeBackground, 60000);
 }
 
+// Function to update lives display
 function updateLivesDisplay() {
     livesContainer.innerHTML = '';
     for (let i = 0; i < lives; i++) {
@@ -168,12 +150,14 @@ function updateLivesDisplay() {
     }
 }
 
+// Function to format time in MM:SS format
 function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
 }
 
+// Function to update timer every second
 function updateTimer() {
     if (!paused) {
         timeLeft--;
@@ -184,16 +168,19 @@ function updateTimer() {
     }
 }
 
+// Function to start the timer
 function startTimer() {
     timerInterval = setInterval(updateTimer, 1000);
 }
 
+// Event listener for play button to start the game
 playButton.addEventListener('click', () => {
     homepage.style.display = 'none';
     gameWrapper.style.display = 'block';
     resetGame();
 });
 
+// Event listener for document ready
 document.addEventListener('DOMContentLoaded', function() {
     const aboutButton = document.getElementById('about-button');
     const aboutSection = document.getElementById('about-section');
@@ -208,10 +195,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Event listener for restart button to reset the game
 restartButton.addEventListener('click', resetGame);
 
+// Initialize timer display with 180 seconds (3 minutes)
 timerDisplay.textContent = formatTime(timeLeft);
 
+// Function to toggle pause/resume game
 function togglePause() {
     paused = !paused;
     if (paused) {
@@ -236,6 +226,7 @@ function togglePause() {
     }
 }
 
+// Event listener for pause button to toggle pause/resume game
 pauseButton.addEventListener('click', () => {
     togglePause();
     if (paused) {
@@ -245,6 +236,7 @@ pauseButton.addEventListener('click', () => {
     }
 });
 
+// Function to show pause menu
 function showPauseMenu() {
     const pauseMenu = document.createElement('div');
     pauseMenu.id = 'pause-menu';
@@ -256,6 +248,7 @@ function showPauseMenu() {
     gameWrapper.appendChild(pauseMenu);
 }
 
+// Function to hide pause menu
 function hidePauseMenu() {
     const pauseMenu = document.getElementById('pause-menu');
     if (pauseMenu) {
@@ -263,11 +256,13 @@ function hidePauseMenu() {
     }
 }
 
+// Function to resume game from pause menu
 function resumeGame() {
     hidePauseMenu();
     togglePause();
 }
 
+// Function to quit game and go back to homepage
 function quitGame() {
     hidePauseMenu();
     clearInterval(backgroundInterval);
