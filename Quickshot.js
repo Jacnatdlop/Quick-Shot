@@ -230,14 +230,12 @@ function showPauseMenu() {
         <div class="pause-menu-item" onclick="quitGame()">QUIT</div>
     `;
     gameWrapper.appendChild(pauseMenu);
-    pauseMenuVisible = true;
 }
 
 function hidePauseMenu() {
     const pauseMenu = document.getElementById('pause-menu');
     if (pauseMenu) {
         pauseMenu.remove();
-        pauseMenuVisible = false;
     }
 }
 
@@ -252,8 +250,8 @@ function quitGame() {
     clearInterval(timerInterval);
     clearTimeout(targetTimeout);
     gameWrapper.style.display = 'none';
-    homepage.style.display = 'flex'; // Ensure homepage is displayed flex for centering
-    homepage.style.justifyContent = 'center'; // Ensure it is centered horizontally
-    homepage.style.alignItems = 'center'; // Ensure it is centered vertically
+    homepage.style.display = 'flex';
+    homepage.style.justifyContent = 'center';
+    homepage.style.alignItems = 'center';
     paused = false;
 }

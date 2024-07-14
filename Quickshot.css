@@ -128,7 +128,6 @@ body {
     transform: translateX(-50%);
 }
 
-
 #pause-menu {
     position: absolute;
     top: 50%;
@@ -154,11 +153,9 @@ body {
     background-color: #e0e0e0;
 }
 
-
 .paused {
     animation-play-state: paused !important;
 }
-
 
 #game-over {
     display: none;
