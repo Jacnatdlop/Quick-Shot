@@ -82,7 +82,9 @@ body {
     position: absolute;
     border-radius: 50%;
     cursor: pointer;
+    background-size: cover;
 }
+
 
 .red {
     background-color: red;

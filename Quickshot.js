@@ -26,6 +26,26 @@ const backgroundImages = [
     'Images/Sumeru.png',
 ];
 
+const friendImages = [
+    'Images/Friend/Serval.png',
+    'Images/Friend/NPC_Eous.png',
+    'Images/Friend/Pom.png',
+    'Images/Friend/Teppei_Icon.png',
+    'Images/Friend/Capy.png'
+
+];
+
+const enemyImages = [
+    'Images/Enemy/Bone_Hydra.png',
+    'Images/Enemy/Cryo.png',
+    'Images/Enemy/Devil.png',
+    'Images/Enemy/Hillichurl.png',
+    'Images/Enemy/Inferno-Bomber.png',
+    'Images/Enemy/Pyro.png',
+    'Images/Enemy/Velk.png',
+    
+];
+
 function changeBackground() {
     const randomIndex = Math.floor(Math.random() * backgroundImages.length);
     gameWrapper.style.backgroundImage = `url(${backgroundImages[randomIndex]})`;
@@ -55,6 +75,8 @@ function createTarget() {
 
     const isRed = Math.random() < 0.8;
     if (isRed) {
+        const randomIndex = Math.floor(Math.random() * enemyImages.length);
+        target.style.backgroundImage = `url(${enemyImages[randomIndex]})`;
         target.classList.add('red');
         target.addEventListener('click', () => {
             if (!timerStarted) {
@@ -68,6 +90,8 @@ function createTarget() {
             createTarget();
         });
     } else {
+        const randomIndex = Math.floor(Math.random() * friendImages.length);
+        target.style.backgroundImage = `url(${friendImages[randomIndex]})`;
         target.classList.add('blue');
         target.addEventListener('click', () => {
             if (!timerStarted) {
