@@ -137,7 +137,7 @@ function resetGame() {
     updateLivesDisplay();
     createTarget();
     changeBackground();
-    backgroundInterval = setInterval(changeBackground, 60000);
+    backgroundInterval = setInterval(changeBackground, 36000); // Change background every 36 seconds
 }
 
 // Function to update lives display
