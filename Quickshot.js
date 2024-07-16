@@ -14,7 +14,7 @@ const pauseButton = document.getElementById('pause-button');
 const timerDisplay = document.getElementById('timer');
 let currentTarget = null;
 let targetTimeout;
-let timeLeft = 180; // Initial game time set to 3 minutes (180 seconds)
+let timeLeft = 180; 
 let paused = false;
 let backgroundInterval;
 
@@ -128,7 +128,7 @@ function resetGame() {
     hidePauseMenu();
     score = 0;
     lives = 5;
-    timeLeft = 180; // Reset time to 3 minutes (180 seconds)
+    timeLeft = 180; 
     timerStarted = false;
     scoreDisplay.textContent = `Score: ${score}`;
     timerDisplay.textContent = formatTime(timeLeft);
@@ -137,7 +137,7 @@ function resetGame() {
     updateLivesDisplay();
     createTarget();
     changeBackground();
-    backgroundInterval = setInterval(changeBackground, 36000); // Change background every 36 seconds
+    backgroundInterval = setInterval(changeBackground, 36000); 
 }
 
 // Function to update lives display
